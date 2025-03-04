@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -17,9 +17,9 @@ namespace _02_demo_of_MVC
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();// Register Built-In MVC Service
-            services.AddControllers();// Register Built-In Web APIs Service 
-            services.AddRazorPages();// Register Built-In Razor-Pages Service 
-            services.AddMvc();
+            //services.AddControllers();// Register Built-In Web APIs Service 
+            //services.AddRazorPages();// Register Built-In Razor-Pages Service 
+            //services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -34,11 +34,11 @@ namespace _02_demo_of_MVC
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapGet("/", async context =>
-                {
-                    await context.Response.WriteAsync("Hello World!");
-                });
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+            app.UseStaticFiles();
         }
     }
 }
