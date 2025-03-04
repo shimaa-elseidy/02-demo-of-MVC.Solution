@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using _02_demo_of_MVC.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace MVC_02.Controllers
 {
@@ -76,9 +77,9 @@ namespace MVC_02.Controllers
         // 2. seqment
         // 3. query params
         // 4. files
-        public IActionResult GetMovie(int id)
+        public IActionResult GetMovie(Movie movie)
         {
-            return Content($"Get Movie By Id :: {id}", "text/html");
+            return Content($"Get Movie By Id :: {movie.Id} , Name : {movie.Name}", "text/html");
         }
     } 
 }
